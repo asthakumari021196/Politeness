@@ -29,8 +29,9 @@ from collections import Counter
 # class for cleaning the tweets 
 class DataCleaning():
     def data_cleaning(self,text):
-    # Remove any hyperlinks
-        sentence = re.sub(r'https?:\/\/\S+', '', text)
+        sentence = text.lower()
+        # Remove any hyperlinks
+        sentence = re.sub(r'https?:\/\/\S+', '', sentence)
         # Removing the RT
         sentence = re.sub(r'RT[\s]+', '', sentence)
         # Remove any '#'
