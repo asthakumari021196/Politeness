@@ -44,7 +44,7 @@ class DataSentiment():
 
 
 
-fil = "C:/Users/kasth/github/master-thesis/politeness.csv"
+fil = "C:/Users/kasth/github/Politeness/data/politeness.csv"
 d = DataSentiment(fil)   
 start_time = time.time()
 d.data_transform() 

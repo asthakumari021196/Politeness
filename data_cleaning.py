@@ -32,8 +32,6 @@ class DataCleaning():
         sentence = text.lower()
         # Remove any hyperlinks
         sentence = re.sub(r'https?:\/\/\S+', '', sentence)
-        # Removing the RT
-        sentence = re.sub(r'RT[\s]+', '', sentence)
         # Remove any '#'
         sentence = re.sub(r'#', '', sentence)
         # Remove the '\n' string
@@ -46,11 +44,6 @@ class DataCleaning():
         sentence = re.sub(r'[0-9]', '', sentence)
 
         return sentence
-
-
-
-    def remove_punctuation(self,text):
-        return text.translate(str.maketrans('', '', string.punctuation))
 
 
     def p_tag_id_generation(self,data):
@@ -129,8 +122,6 @@ class DataCleaning():
         df['txt'] = df[['txt']].applymap(lambda x: self.data_cleaning(x))
         print('data cleaned')
         
-        df['txt'] = df['txt'].apply(lambda x: self.remove_punctuation(x))
-
         df['txt'] = df['txt'].apply(lambda x: self.remove_stopwords(x))
 
         df = self.p_tag_id_generation(df)
