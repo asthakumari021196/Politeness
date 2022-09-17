@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+              background-color: linen;
+            }
+            
+            h1 {
+              margin: 10px;
+            }
+            </style>
+        <title>Polite detection</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    </head>
+    
+    <body>
+        <div class="container">
+            <form name="form", method="POST", style="text-align: center;">
+                <br>
+                <h1>Input the sentence for detection</h1><br>
+                <textarea class="form-control" id="Text" name="Text" rows="5" cols="40"></textarea><br>
+                <button class="btn btn-primary mb-3" value="Submit">Run</button>
+            </form>
+            {% if polarity == "positive" %}
+                <div class="alert alert-success" role="alert">Polarity:    {{ polarity }}</div>
+            {% elif polarity == "negative" %}
+                <div class="alert alert-danger" role="alert">Polarity:    {{ polarity }}</div>
+            {% elif polarity == "neutral" %}
+                <div class="alert alert-info" role="alert">Polarity:    {{ polarity }}</div>
+            {% else %}
+            {% endif %}
+                
+            {% if sent == "polite" %}
+                <div class="alert alert-success" role="alert">Sentence:   {{ sent }}</div>
+            {% elif sent == "impolite" %}
+                <div class="alert alert-danger" role="alert">Sentence:   {{ sent }}</div>
+            {% else %}
+            {% endif %}
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    </body>
+</html>
