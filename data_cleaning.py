@@ -26,19 +26,18 @@ from collections import Counter
 
 
 
-# class for cleaning the tweets 
+# class for cleaning the emails 
 class DataCleaning():
     def data_cleaning(self,text):
+        # converting to lower case
         sentence = text.lower()
         # Remove any hyperlinks
         sentence = re.sub(r'https?:\/\/\S+', '', sentence)
         # Remove any '#'
         sentence = re.sub(r'#', '', sentence)
-        # Remove the '\n' string
+        # Remove the new line '\n' characters
         sentence = re.sub('\\n', ' ', sentence)
-        # Removing the @mention
-        sentence = re.sub(r'@[A-Za-z0-9]+', '', sentence)
-        # Data Cleansing
+        # Removing extra spaces  characters
         sentence = re.sub(r'[^\w\s]', '', sentence)
         # Removing numbers
         sentence = re.sub(r'[0-9]', '', sentence)
