@@ -22,6 +22,12 @@
                 <textarea class="form-control" id="Text" name="Text" rows="5" cols="40"></textarea><br>
                 <button class="btn btn-primary mb-3" value="Submit">Run</button>
             </form>
+
+            {% if err != "" %}
+                <div class="alert alert-danger" role="alert">error:    {{ err }}</div>
+            {% else %}
+            {% endif %}
+            
             {% if polarity == "positive" %}
                 <div class="alert alert-success" role="alert">Polarity:    {{ polarity }}</div>
             {% elif polarity == "negative" %}
@@ -31,12 +37,21 @@
             {% else %}
             {% endif %}
                 
-            {% if sent == "polite" %}
-                <div class="alert alert-success" role="alert">Sentence:   {{ sent }}</div>
-            {% elif sent == "impolite" %}
-                <div class="alert alert-danger" role="alert">Sentence:   {{ sent }}</div>
+            {% if sent_svm == "polite" %}
+                <div class="alert alert-success" role="alert">Sentence detected by SVM:   {{ sent_svm }}</div>
+            {% elif sent_svm == "impolite" %}
+                <div class="alert alert-danger" role="alert">Sentence detected by SVM:   {{ sent_svm }}</div>
             {% else %}
             {% endif %}
+
+            {% if sent_naive == "polite" %}
+            <div class="alert alert-success" role="alert">Sentence detected by Naive Bayes:   {{ sent_naive }}</div>
+        {% elif sent_naive == "impolite" %}
+            <div class="alert alert-danger" role="alert">Sentence detected by Naive Bayes:   {{ sent_naive }}</div>
+            
+        {% else %}
+        {% endif %}
+
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     </body>
