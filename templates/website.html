@@ -23,8 +23,13 @@
                 <button class="btn btn-primary mb-3" value="Submit">Run</button>
             </form>
 
+            {% if text != "" %}
+                <div class="alert alert-info" role="alert">Input Sentence:    {{ text }}</div>
+            {% else %}
+            {% endif %}
+
             {% if err != "" %}
-                <div class="alert alert-danger" role="alert">error:    {{ err }}</div>
+                <div class="alert alert-danger" role="alert">Error:    {{ err }}</div>
             {% else %}
             {% endif %}
             

@@ -1,4 +1,3 @@
-from turtle import clear
 import pandas as pd
 import time
 
@@ -20,6 +19,7 @@ class DataSentiment():
     def data_transform(self):
         self.data = self.data[self.data["is_useful"] == 1]
         self.data = self.data[['txt','p_tag']]
+        self.data.drop_duplicates(subset=['txt'])
         # insuring that null values are not present
         self.data = self.data[pd.notnull(self.data)]
         dc = data_cleaning.DataCleaning()
@@ -29,6 +29,8 @@ class DataSentiment():
         new_df['polarity']  = new_df[['txt']].applymap(lambda x: dp.calculatePolarity(x))
 
         new_df.to_csv('cleaned_file.csv')
+        print('Value Counts: ')
+        print(new_df['polarity'].value_counts())
        
         # print(self.data['polarity'].value_counts())
         

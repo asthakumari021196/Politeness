@@ -75,8 +75,9 @@ def main():
         sent_svm = ""
         polarity = ""
         err = ""
+        text = ""
         
-    return render_template("website.html", sent_svm = sent_svm, polarity = polarity, sent_naive = sent_naive, err = err)
+    return render_template("website.html", text = text, sent_svm = sent_svm, polarity = polarity, sent_naive = sent_naive, err = err)
 # Running the app
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port = 80,debug = True)
